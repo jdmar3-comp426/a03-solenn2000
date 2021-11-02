@@ -6,7 +6,9 @@
  * returns: { type: 'number', value: 4 }
  */
 export function identifyVariable(variable) {
-   return `type:'${typeof variable}', value: ${variable} `
+   return {type: typeof variable,
+    value: variable
+   }
 }
 
 
@@ -26,9 +28,7 @@ export function identifyVariable(variable) {
 export function identifyArray(array) {
    const arr =[]
    array.forEach((element, index) => {
-      console.log(index);
-      console.log(element);
-      arr[index]= `type:'${typeof element}', value: ${element} `
+      arr[index]= identifyVariable(element);
    } )
    return arr
 
