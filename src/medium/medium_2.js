@@ -29,8 +29,8 @@ export const allCarStats = {
         city: getStatistics(city_mph)["mean"],
         highway: getStatistics(hwy_mph)["mean"]
     },
-    allYearStats: undefined,
-    ratioHybrids: undefined,
+    allYearStats: getStatistics(mpg_data.map(({ year }) => year)),
+    ratioHybrids: mpg_data.map(({ hybrid }) => hybrid).filter(Boolean).length/city_mph.length,
 };
 
 
@@ -91,6 +91,30 @@ export const allCarStats = {
  *
  * }
  */
+
+ let hybrids = mpg_data.filter(function (mpg_data) {
+    return mpg_data.hybrid === true;
+});
+let countedID = hybrids.reduce(function (allIDs, id) {
+    if (id in allIDs) {
+        allIDs[id]++
+    }
+    else {
+      allIDs[id] = 1
+    }
+    return allIDs
+}, {})
+
+let makes= mpg_data.reduce(function(acc,obj){
+    let key =obj["make"]
+    if (!acc[key]){
+        acc[key] =[]
+    }
+    acc[key].push(obj)
+    return acc
+},{})
+
+
 export const moreStats = {
     makerHybrids: undefined,
     avgMpgByYearAndHybrid: undefined
