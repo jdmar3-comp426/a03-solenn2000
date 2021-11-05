@@ -1,5 +1,6 @@
 import mpg_data from "./data/mpg_data.js";
 import {getStatistics} from "./medium_1.js";
+import {countArray} from "../../src/mild/mild_1.js";
 
 /*
 This section can be done by using the array prototype functions.
@@ -91,31 +92,75 @@ export const allCarStats = {
  *
  * }
  */
-
- let hybrids = mpg_data.filter(function (mpg_data) {
-    return mpg_data.hybrid === true;
-});
-let countedID = hybrids.reduce(function (allIDs, id) {
-    if (id in allIDs) {
-        allIDs[id]++
-    }
-    else {
-      allIDs[id] = 1
-    }
-    return allIDs
-}, {})
-
-let makes= mpg_data.reduce(function(acc,obj){
-    let key =obj["make"]
+ function groupMake(data){
+    return data.reduce(function(acc,obj){
+    let key = obj["make"];
     if (!acc[key]){
-        acc[key] =[]
+        acc[key]= []
     }
     acc[key].push(obj)
     return acc
-},{})
+    },{})
+}
+function HybridsCount(data){
+    let countedHybrids = data.reduce(function(allHybrids,hybrid){
+        if (hybrid in allHybrids){
+            allHybrids[hybrid]++;
+        }
+        else{
+            allHybrids[hybrid]=1;
+        }
+        return allHybrids
+    },{})
+}
+
+
+function getListforMake(MakesDict, key){
+
+    let id_array = MakesDict[key].map(({ id }) => id);
+    let count = countArray(id_array);
+    var items = Object.keys(count).map(function(key) {
+    return [key, count[key]];
+      });
+    let sorted = items.sort(function(first,second){
+        return second[1]-first[1];
+    });
+    return sorted
+}
+
+
+function printKeys(array){
+    var arr =[];
+    array.forEach(element => {
+        arr.push(element[0])
+    })
+    return arr;
+}
+
+let hybrids = mpg_data.filter(function (mpg_data) {
+    return mpg_data.hybrid === true;
+ });
+
+let make_dict= groupMake(hybrids);
+let sorted_dict = Object.keys(make_dict)
+    .sort()
+    .reduce(function (acc, key) {
+        acc[key] = make_dict[key];
+        return acc;
+    }, {});
+
+
+let arr =[];
+for (let key in sorted_dict ){
+    let element = {
+        make: key,
+        hybrids: printKeys(getListforMake(sorted_dict,key))
+    }
+    arr.push(element);
+}
+
 
 
 export const moreStats = {
-    makerHybrids: undefined,
-    avgMpgByYearAndHybrid: undefined
-};
+    makerHybrids: arr.sort()
+}
