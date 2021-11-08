@@ -30,7 +30,7 @@ export const allCarStats = {
         city: getStatistics(city_mph)["mean"],
         highway: getStatistics(hwy_mph)["mean"]
     },
-    allYearStats: getStatistics(mpg_data.map(({ year }) => year)),
+    allYearStats: getStatistics(mpg_data.map(car=> car.year)),
     ratioHybrids: mpg_data.map(({ hybrid }) => hybrid).filter(Boolean).length/city_mph.length,
 };
 
