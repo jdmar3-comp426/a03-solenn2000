@@ -92,9 +92,9 @@ export const allCarStats = {
  *
  * }
  */
- function groupMake(data){
+ function groupType(data,type){
     return data.reduce(function(acc,obj){
-    let key = obj["make"];
+    let key = obj[type];
     if (!acc[key]){
         acc[key]= []
     }
@@ -141,7 +141,7 @@ let hybrids = mpg_data.filter(function (mpg_data) {
     return mpg_data.hybrid === true;
  });
 
-let make_dict= groupMake(hybrids);
+let make_dict= groupType(hybrids,"make");
 let sorted_dict = Object.keys(make_dict)
     .sort()
     .reduce(function (acc, key) {
@@ -158,9 +158,38 @@ for (let key in sorted_dict ){
     }
     arr.push(element);
 }
+function get_avg_htypes(array){
+    let arr = []
+    for (let key in array ){
+        let value = array[key];
+        let hybrids = value.filter(function (value) {
+            return value.hybrid === true;
+        });
 
+
+        let nonhybrids = value.filter(function (value) {
+            return value.hybrid === false;
+        });
+
+
+        arr[key] = {
+            hybrid: {
+                city: getStatistics(hybrids.map(({ city_mpg }) => city_mpg))["mean"],
+                highway: getStatistics(hybrids.map(({ highway_mpg }) => highway_mpg))["mean"]
+            },
+            notHybrid: {
+                city: getStatistics(nonhybrids.map(({ city_mpg }) => city_mpg))["mean"],
+                highway: getStatistics(nonhybrids.map(({ highway_mpg }) => highway_mpg))["mean"]
+            }
+        }
+
+    }
+    return arr;
+}
+let groupedYear = groupType(mpg_data, "year");
 
 
 export const moreStats = {
-    makerHybrids: arr.sort()
+    makerHybrids: arr.sort(),
+    avgMpgByYearAndHybrid: get_avg_htypes(groupedYear)
 }
