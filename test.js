@@ -1,18 +1,19 @@
 import {countArray} from "./src/mild/mild_1.js"
 import mpg_data from "./src/medium/data/mpg_data.js";
 import {getStatistics} from "./src/medium/medium_1.js"
+import {moreStats} from "./src/medium/medium_2.js"
 
 
-function groupType(data,type){
-    return data.reduce(function(acc,obj){
-    let key = obj[type];
-    if (!acc[key]){
-        acc[key]= []
-    }
-    acc[key].push(obj)
-    return acc
-    },{})
-}
+// function groupType(data,type){
+//     return data.reduce(function(acc,obj){
+//     let key = obj[type];
+//     if (!acc[key]){
+//         acc[key]= []
+//     }
+//     acc[key].push(obj)
+//     return acc
+//     },{})
+// }
 
 
 function get_avg_htypes(array){
@@ -43,6 +44,26 @@ function get_avg_htypes(array){
     }
     return arr;
 }
-let groupedYear = groupType(mpg_data, "year");
-let years_div = get_avg_htypes(groupedYear);
-console.log(years_div["2009"]);
+function groupType(list, key) {
+    return list.reduce(function(rv, x) {
+      (rv[x[key]] = rv[x[key]] || []).push(x);
+      return rv
+    }, {});
+};
+
+let groupedYear = groupType(mpg_data,"year");
+
+let a =moreStats.avgMpgByYearAndHybrid;
+
+const arrFiltered = a.filter(el => {
+  return el != null && el != '';
+});
+//console.log(arrFiltered);
+console.log(moreStats.avgMpgByYearAndHybrid);
+
+
+
+
+//console.log(Object.keys(groupedYear).length);
+//let years_div = get_avg_htypes(groupedYear);
+//console.log(years_div["2009"]);

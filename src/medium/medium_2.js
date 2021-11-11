@@ -92,27 +92,13 @@ export const allCarStats = {
  *
  * }
  */
- function groupType(data,type){
-    return data.reduce(function(acc,obj){
-    let key = obj[type];
-    if (!acc[key]){
-        acc[key]= []
-    }
-    acc[key].push(obj)
-    return acc
-    },{})
-}
-function HybridsCount(data){
-    let countedHybrids = data.reduce(function(allHybrids,hybrid){
-        if (hybrid in allHybrids){
-            allHybrids[hybrid]++;
-        }
-        else{
-            allHybrids[hybrid]=1;
-        }
-        return allHybrids
-    },{})
-}
+ function groupType(list, key) {
+    return list.reduce(function(rv, x) {
+      (rv[x[key]] = rv[x[key]] || []).push(x);
+      return rv;
+    }, {});
+  };
+
 
 
 function getListforMake(MakesDict, key){
@@ -187,9 +173,13 @@ function get_avg_htypes(array){
     return arr;
 }
 let groupedYear = groupType(mpg_data, "year");
+let avg_types = get_avg_htypes(groupedYear);
+const arrFiltered = avg_types.filter(el => {
+    return el != null && el != '';
+  });
 
 
 export const moreStats = {
     makerHybrids: arr.sort(),
-    avgMpgByYearAndHybrid: get_avg_htypes(groupedYear)
+    avgMpgByYearAndHybrid: arrFiltered
 }
