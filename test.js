@@ -78,5 +78,5 @@ import { searchByYear} from "./src/medium/medium_3.js";
 // });
 
 // console.log(sorted);
-let arr = ["2012"]
+let arr = [2010];
 console.log(searchByYear(mpg_data,arr));

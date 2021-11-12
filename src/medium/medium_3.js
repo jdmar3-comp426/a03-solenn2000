@@ -75,7 +75,7 @@ export function searchName(car_data, searchTerm) {
 export function searchByYear(car_data, years) {
     let arr=[]
     car_data.forEach(element => {
-        if (years.includes(element['year'])){
+        if (years.includes(element["year"])){
             arr.push(element);
         }
     });
