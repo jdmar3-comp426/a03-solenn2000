@@ -78,11 +78,7 @@ import { repeat} from "./src/spicy/spicy_9";
 // });
 
 // console.log(sorted);
-let data = 'data'
-a = function print(data){
-    console.log(data);
-    return data
+
+a = function print(a,b){
+    return a*b;
 }
-let input = ['heyyy']
-let arr = repeat(print,3,input);
-console.log(arr);
