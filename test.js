@@ -1,8 +1,7 @@
 import {countArray} from "./src/mild/mild_1.js"
 import mpg_data from "./src/medium/data/mpg_data.js";
-import {getStatistics} from "./src/medium/medium_1.js"
-import {moreStats} from "./src/medium/medium_2.js"
-import { repeat} from "./src/spicy/spicy_9";
+
+
 
 
 // function groupType(data,type){
