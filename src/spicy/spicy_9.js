@@ -19,19 +19,20 @@ export const repeat = (fn, n, ...params) => {
     for (let i = 0; i<n; i++){
         let  a = fn(...params);
         arr.push(a);
-
-
     }
     return arr;
 };
-
+function print(data){
+    console.log(data);
+    return data
+}
 
 /**
  * Use the repeat function to log the string "Hello, world!" to the console
  *   10 times.
  */
 export const repeatDemo = () => {
-
+    repeat(print,10,"Hello, world!");
 };
 
 
