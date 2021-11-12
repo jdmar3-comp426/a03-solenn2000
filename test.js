@@ -2,7 +2,7 @@ import {countArray} from "./src/mild/mild_1.js"
 import mpg_data from "./src/medium/data/mpg_data.js";
 import {getStatistics} from "./src/medium/medium_1.js"
 import {moreStats} from "./src/medium/medium_2.js"
-import { searchByYear} from "./src/medium/medium_3.js";
+import { repeat} from "./src/spicy/spicy_9";
 
 
 // function groupType(data,type){
@@ -78,5 +78,11 @@ import { searchByYear} from "./src/medium/medium_3.js";
 // });
 
 // console.log(sorted);
-let arr = [2010];
-console.log(searchByYear(mpg_data,arr));
+let data = 'data'
+a = function print(data){
+    console.log(data);
+    return data
+}
+let input = ['heyyy']
+let arr = repeat(print,3,input);
+console.log(arr);
