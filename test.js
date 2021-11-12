@@ -79,6 +79,7 @@ import { repeat} from "./src/spicy/spicy_9";
 
 // console.log(sorted);
 
-a = function print(a,b){
+function print(a,b){
     return a*b;
 }
+console.log(print(2,3));
