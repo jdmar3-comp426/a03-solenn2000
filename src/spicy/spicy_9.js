@@ -15,8 +15,9 @@
  *                from calling the function
  */
 export const repeat = (fn, n, ...params) => {
+    let a;
     for (let i = 0; i<n; i++){
-        let a = fn(params);
+         a = fn(params);
     }
     return a;
 };
