@@ -15,7 +15,7 @@
  *                from calling the function
  */
 export const repeat = (fn, n, ...params) => {
-    let arr;
+    let arr= String[n];
     for (let i = 0; i<n; i++){
         let  a = fn(params);
         arr.push(a);
