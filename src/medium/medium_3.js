@@ -73,5 +73,11 @@ export function searchName(car_data, searchTerm) {
  * @returns {[]} an array of car objects
  */
 export function searchByYear(car_data, years) {
-
+    let arr=[]
+    car_data.forEach(element => {
+        if (years.includes(element['year'])){
+            arr.push(element);
+        }
+    });
+    return arr;
 }
