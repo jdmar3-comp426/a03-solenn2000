@@ -1,6 +1,6 @@
 import {countArray} from "./src/mild/mild_1.js"
 import mpg_data from "./src/medium/data/mpg_data.js";
-
+import {tenTimes} from "./src/spicy/spicy_9.js"
 
 
 
@@ -78,7 +78,5 @@ import mpg_data from "./src/medium/data/mpg_data.js";
 
 // console.log(sorted);
 
-function print(a,b){
-    return a*b;
-}
-console.log(print(2,3));
+
+console.log(tenTimes(2));
