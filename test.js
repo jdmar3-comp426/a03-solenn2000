@@ -1,7 +1,7 @@
 import {countArray} from "./src/mild/mild_1.js"
 import mpg_data from "./src/medium/data/mpg_data.js";
 import {allEvensAreOdd} from "./src/spicy/spicy_9.js"
-import {everyEven} from "./src/spicy/spicy_9.js"
+import {hasExactly} from "./src/spicy/spicy_9.js"
 
 
 
@@ -78,4 +78,9 @@ import {everyEven} from "./src/spicy/spicy_9.js"
 // });
 
 // console.log(sorted);
-console.log(allEvensAreOdd([1, 1, 1, 1, 0]));
+function everyEven(n) {
+    return n % 2 == 0;
+ }
+ x => x % 2 === 0
+
+console.log(hasExactly([1, 0, 1, 0, 1], x => x === 0,3));

@@ -217,7 +217,7 @@ export const hasExactly = (arr, test, n) => {
     let num_passed = 0;
 
     for (let i = 0; i<arr.length; i++){
-        if (!test(arr[i])){
+        if (test(arr[i])){
             num_passed++;
         }
     }
