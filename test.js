@@ -1,6 +1,6 @@
 import {countArray} from "./src/mild/mild_1.js"
 import mpg_data from "./src/medium/data/mpg_data.js";
-import {tenTimes} from "./src/spicy/spicy_9.js"
+import {everyEven} from "./src/spicy/spicy_9.js"
 
 
 
