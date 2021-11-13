@@ -81,4 +81,4 @@ function isEven(n) {
     return n % 2 == 0;
  }
 
-console.log(everyEven([1, 1, 0, 1, 1],isEven));
+console.log(everyEven([1, 1, 1, 1, 1], x => x === 1));
