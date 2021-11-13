@@ -1,6 +1,6 @@
 import {countArray} from "./src/mild/mild_1.js"
 import mpg_data from "./src/medium/data/mpg_data.js";
-import {everyEven} from "./src/spicy/spicy_9.js"
+import {filter} from "./src/spicy/spicy_9.js"
 
 
 
@@ -81,4 +81,4 @@ function isEven(n) {
     return n % 2 == 0;
  }
 
-console.log(everyEven([1, 1, 1, 1, 1], x => x === 1));
+console.log(filter(['yes', 'nope', 'maybe', 'yellow'], x => x[0] === 'y'));
