@@ -77,6 +77,8 @@ import {everyEven} from "./src/spicy/spicy_9.js"
 // });
 
 // console.log(sorted);
+function isEven(n) {
+    return n % 2 == 0;
+ }
 
-
-console.log(tenTimes(2));
+console.log(everyEven([1, 1, 0, 1, 1],isEven));
