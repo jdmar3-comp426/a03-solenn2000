@@ -1,7 +1,7 @@
 import {countArray} from "./src/mild/mild_1.js"
 import mpg_data from "./src/medium/data/mpg_data.js";
 import {allEvensAreOdd} from "./src/spicy/spicy_9.js"
-import {hasExactly} from "./src/spicy/spicy_9.js"
+import {moreStats} from "./src/medium/medium_2.js"
 
 
 
@@ -83,4 +83,4 @@ function everyEven(n) {
  }
  x => x % 2 === 0
 
-console.log(hasExactly([1, 0, 1, 0, 1], x => x === 0,3));
+console.log(moreStats);
