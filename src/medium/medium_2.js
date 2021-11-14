@@ -157,7 +157,7 @@ function get_avg_htypes(array){
             return value.hybrid === false;
         });
 
-
+        console.log(key);
         arr[key] = {
             hybrid: {
                 city: getStatistics(hybrids.map(({ city_mpg }) => city_mpg))["mean"],
